@@ -150,6 +150,25 @@ p {
   margin-bottom: 0.5rem;
 }
 
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--primary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
+}
+
 /* Sidebar/Bottom Nav for Mobile */
 .nav {
   position: fixed;

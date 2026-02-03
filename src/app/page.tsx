@@ -77,9 +77,6 @@ export default function Home() {
                 <p>Kota Kediri</p>
               </li>
               <li style={{ marginBottom: '1rem' }}>
-                <h3>SMK PGRI 03 Kota Kediri</h3>
-              </li>
-              <li style={{ marginBottom: '1rem' }}>
                 <h3>SMP Busthanul Ulum Jatirokeh</h3>
                 <p>Brebes</p>
               </li>
@@ -147,18 +144,23 @@ export default function Home() {
         <div className="glass-panel card" style={{ textAlign: 'center' }}>
           <h2>Hubungi Saya</h2>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginTop: '2rem' }}>
-            <div>
-              <p style={{ fontWeight: 600 }}>Email</p>
-              <a href="mailto:muhammad.khulal25@gmail.com" style={{ color: 'var(--primary)' }}>muhammad.khulal25@gmail.com</a>
-            </div>
-            <div>
-              <p style={{ fontWeight: 600 }}>WhatsApp</p>
-              <a href="https://wa.me/6285171542025" style={{ color: 'var(--primary)' }}>+62 851 7154 2025</a>
-            </div>
-            <div>
-              <p style={{ fontWeight: 600 }}>Website</p>
-              <a href="https://muhammadkhulal.pages.dev" style={{ color: 'var(--primary)' }}>muhammadkhulal.pages.dev</a>
-            </div>
+            <a href="mailto:muhammad.khulal25@gmail.com" className="icon-btn" aria-label="Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </a>
+
+            <a href="https://wa.me/6285171542025" className="icon-btn" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </a>
+
+            <a href="https://muhammadkhulal.pages.dev" className="icon-btn" aria-label="Website" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" /><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /><path d="M2 12h20" />
+              </svg>
+            </a>
           </div>
           <p style={{ marginTop: '3rem', fontSize: '0.9rem' }}>
             Jl. K. Abdullatif No.023, 003/003, Kalisalak, Margasari, Tegal
