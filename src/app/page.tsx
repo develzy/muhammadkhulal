@@ -12,31 +12,50 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
     const handleContextMenu = (e: MouseEvent) => e.preventDefault();
     document.addEventListener('contextmenu', handleContextMenu);
 
-    // Try to hide content on PrintScreen key (Not 100% effective due to OS limitations, but a deterrent)
-    const handleKeyUp = (e: KeyboardEvent) => {
-      if (e.key === 'PrintScreen') {
-        alert('Screenshots are not allowed!');
-        onClose();
-      }
+    // Close on Escape key
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
     };
-    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       document.body.style.overflow = 'unset';
       document.removeEventListener('contextmenu', handleContextMenu);
-      window.removeEventListener('keyup', handleKeyUp);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [onClose]);
 
   return (
     <div
-      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-xl"
       onClick={onClose}
-      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 9999 }}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 10000,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.95)',
+        backdropFilter: 'blur(15px)',
+        WebkitBackdropFilter: 'blur(15px)',
+      }}
     >
       <div
-        className="relative bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
-        style={{ width: '92%', maxWidth: '850px', height: '85vh', border: '1px solid rgba(255,255,255,0.1)' }}
+        style={{
+          position: 'relative',
+          width: '92%',
+          maxWidth: '900px',
+          height: '85vh',
+          backgroundColor: '#ffffff',
+          borderRadius: '32px',
+          overflow: 'hidden',
+          boxShadow: '0 50px 100px rgba(0,0,0,0.5)',
+          display: 'flex',
+          flexDirection: 'column'
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Anti-Print CSS */}
@@ -47,37 +66,83 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
         `}</style>
 
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 p-5 flex justify-between items-center z-[100] bg-white/80 backdrop-blur-md border-b border-black/5">
-          <h3 className="text-black font-bold text-lg">{title}</h3>
+        <div style={{
+          padding: '1.5rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: '1px solid rgba(0,0,0,0.05)',
+          backgroundColor: '#ffffff',
+          zIndex: 10
+        }}>
+          <h3 style={{ margin: 0, color: '#1d1d1f', fontSize: '1.2rem', fontWeight: 700 }}>{title}</h3>
           <button
             onClick={onClose}
-            className="bg-black text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all active:scale-95 shadow-lg"
+            style={{
+              backgroundColor: '#000000',
+              color: '#ffffff',
+              border: 'none',
+              padding: '0.7rem 1.5rem',
+              borderRadius: '50px',
+              fontSize: '0.9rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
           >
             Tutup
           </button>
         </div>
 
         {/* Content Container */}
-        <div className="w-full h-full relative bg-gray-900 flex items-center justify-center select-none">
-          {/* Watermark Grid Overlay */}
-          <div className="absolute inset-0 z-40 pointer-events-none flex flex-wrap content-start overflow-hidden opacity-30">
-            {Array.from({ length: 40 }).map((_, i) => (
-              <div key={i} className="w-48 h-24 flex items-center justify-center transform -rotate-45">
-                <span className="text-white text-xs font-bold whitespace-nowrap">
-                  DOKUMEN ASLI DILINDUNGI<br />MILIK M. LU'LU KHULALUDDIN<br />DILARANG MENYALIN
-                </span>
-              </div>
-            ))}
+        <div style={{
+          flex: 1,
+          position: 'relative',
+          backgroundColor: '#f5f5f7',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1rem',
+          overflow: 'hidden',
+          userSelect: 'none'
+        }}>
+          {/* Subtle Watermark Overlay */}
+          <div style={{
+            position: 'absolute',
+            inset: 0,
+            zIndex: 5,
+            pointerEvents: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            opacity: 0.1,
+            transform: 'rotate(-30deg)'
+          }}>
+            <p style={{
+              fontSize: '3rem',
+              fontWeight: 900,
+              color: '#000',
+              textAlign: 'center',
+              lineHeight: 1.2
+            }}>
+              DOKUMEN ASLI<br />DILINDUNGI
+            </p>
           </div>
 
           {/* Certificate Image */}
-          <div className="relative z-10 w-full h-full">
+          <div style={{
+            position: 'relative',
+            zIndex: 1,
+            width: '100%',
+            height: '100%'
+          }}>
             <Image
               src={imgPath}
               alt={`Ijazah ${title}`}
               fill
               style={{ objectFit: 'contain' }}
               className="pointer-events-none"
+              priority
             />
           </div>
         </div>
