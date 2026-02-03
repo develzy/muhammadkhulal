@@ -106,7 +106,7 @@ export default function Home() {
       <section id="pengalaman" className="container">
         <h2>Pengalaman Kerja</h2>
         <div className="glass-panel card">
-          <span className="tag">Non-Aktif</span>
+          <span className="tag">Non-Aktif • 2026</span>
           <h3>Tenaga Pendidik & Sekretaris Satu</h3>
           <p style={{ color: 'var(--primary)', fontWeight: 600 }}>Pondok Pesantren Lirboyo</p>
           <ul style={{ marginTop: '1rem', marginLeft: '1.2rem', opacity: 0.8 }}>
@@ -118,7 +118,7 @@ export default function Home() {
         </div>
 
         <div className="glass-panel card">
-          <span className="tag">Non-Aktif</span>
+          <span className="tag">Non-Aktif • 2025</span>
           <h3>Tenaga Pendidik (Teknologi/Pengembangan Web)</h3>
           <p style={{ color: 'var(--primary)', fontWeight: 600 }}>Pondok Pesantren Lirboyo</p>
           <ul style={{ marginTop: '1rem', marginLeft: '1.2rem', opacity: 0.8 }}>
@@ -129,7 +129,7 @@ export default function Home() {
         </div>
 
         <div className="glass-panel card">
-          <span className="tag">Non-Aktif</span>
+          <span className="tag">Non-Aktif • 2020</span>
           <h3>Pendidik Bantu (Keagamaan Islam)</h3>
           <p style={{ color: 'var(--primary)', fontWeight: 600 }}>SMP N 01 Kota Kediri</p>
           <ul style={{ marginTop: '1rem', marginLeft: '1.2rem', opacity: 0.8 }}>
