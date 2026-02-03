@@ -207,6 +207,7 @@ export default function Home() {
       )}
 
       <main>
+        <div className="bg-mesh"></div>
         {/* Navigation */}
         <nav className="nav glass-panel">
           <a href="#profil">Profil</a>
@@ -217,48 +218,53 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section className="hero">
+        <section className="hero" style={{ textAlign: 'center' }}>
           <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-            <div className="glass-panel" style={{
-              width: '220px',
-              height: '220px',
+            <div style={{
+              width: '240px',
+              height: '240px',
               borderRadius: '50%',
-              margin: '0 auto 2.5rem',
-              background: 'linear-gradient(135deg, #e2e8f0, #f8fafc)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              overflow: 'hidden',
-              border: '4px solid rgba(255,255,255,0.8)',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+              margin: '0 auto 3rem',
+              padding: '8px',
+              background: 'rgba(255, 255, 255, 0.05)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
               position: 'relative',
               animation: 'float 6s ease-in-out infinite'
             }}>
-              <Image
-                src="/saya.png"
-                alt="Mukhammad Lu'lu Khulaluddin"
-                fill
-                style={{ objectFit: 'cover' }}
-                priority
-              />
+              <div style={{ 
+                width: '100%', 
+                height: '100%', 
+                borderRadius: '50%', 
+                overflow: 'hidden',
+                position: 'relative',
+                border: '1px solid rgba(255, 255, 255, 0.2)'
+              }}>
+                <Image
+                  src="/saya.png"
+                  alt="Mukhammad Lu&apos;lu Khulaluddin"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  priority
+                />
+              </div>
             </div>
             <h1 className="gradient-text">Mukhammad Lu&apos;lu Khulaluddin</h1>
             <p style={{
               fontSize: '1.25rem',
-              fontWeight: 500,
-              opacity: 0.8,
-              letterSpacing: '0.2em',
-              marginBottom: '3rem',
-              color: 'var(--foreground)'
+              fontWeight: 400,
+              opacity: 0.5,
+              letterSpacing: '0.3em',
+              marginBottom: '4rem',
+              textTransform: 'uppercase'
             }}>
-              TENAGA PENDIDIK & ADMINISTRATIF
+              Tenaga Pendidik & Administratif
             </p>
-            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '1.25rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="#profil" className="btn btn-secondary">
                 Tentang Saya
               </a>
               <a href="#kontak" className="btn btn-primary">
-                Hubungi
+                Hubungi Saya
               </a>
             </div>
           </div>
