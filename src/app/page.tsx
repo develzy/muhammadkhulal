@@ -329,6 +329,7 @@ export default function Home() {
             <p style={{ color: 'var(--primary)', fontWeight: 600 }}>Pondok Pesantren Lirboyo</p>
             <ul style={{ marginTop: '1rem', marginLeft: '1.2rem', opacity: 0.8 }}>
               <li>Melaksanakan kegiatan pembelajaran sesuai rencana dan tujuan pembelajaran.</li>
+              <li>Berperan sebagai penghubung dan koordinator komunikasi dengan Pemerintah Provinsi Jawa Timur, Pemerintah Kota, Kementerian Agama, serta Dinas Pendidikan Kota Kediri dalam rangka pelaksanaan dan administrasi kegiatan kelembagaan.</li>
               <li>Mengelola arsip dokumen secara rapi dan sistematis.</li>
               <li>Membantu penyusunan laporan harian dan bulanan.</li>
               <li>Mengatur jadwal rapat dan mengirimkan undangan.</li>
