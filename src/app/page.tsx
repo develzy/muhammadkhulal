@@ -242,7 +242,7 @@ export default function Home() {
                 priority
               />
             </div>
-            <h1 className="gradient-text">Mukhammad Lu'lu Khulaluddin</h1>
+            <h1 className="gradient-text">Mukhammad Lu&apos;lu Khulaluddin</h1>
             <p style={{
               fontSize: '1.25rem',
               fontWeight: 500,
@@ -269,7 +269,7 @@ export default function Home() {
           <div className="glass-panel card">
             <h2>Profil</h2>
             <p>
-              Lulusan Madrasah Aliyah dan Ma'had Aly Lirboyo dengan kemampuan di bidang pendidikan, administrasi,
+              Lulusan Madrasah Aliyah dan Ma&apos;had Aly Lirboyo dengan kemampuan di bidang pendidikan, administrasi,
               dan organisasi. Berpengalaman dalam pengelolaan dokumen, penjadwalan, serta operasional kantor,
               didukung penguasaan software perkantoran dan komunikasi yang baik.
             </p>
@@ -388,7 +388,7 @@ export default function Home() {
         </section>
 
         <footer style={{ textAlign: 'center', padding: '6rem 0 8rem', opacity: 0.5, fontSize: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          &copy; 2026 M. Lu'lu Khulaluddin.
+          &copy; 2026 M. Lu&apos;lu Khulaluddin.
         </footer>
       </main>
     </>
