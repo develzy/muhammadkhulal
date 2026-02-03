@@ -269,7 +269,7 @@ export default function Home() {
 
         {/* Education & Skills Section */}
         <section id="pendidikan" className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
             <div className="glass-panel card">
               <h2>Pendidikan</h2>
               <p className="mb-4 text-sm opacity-60">Klik untuk melihat ijazah (Protected)</p>
@@ -370,7 +370,7 @@ export default function Home() {
           </div>
         </section>
 
-        <footer style={{ textAlign: 'center', padding: '4rem 0', opacity: 0.5, fontSize: '0.8rem' }}>
+        <footer style={{ textAlign: 'center', padding: '6rem 0 8rem', opacity: 0.5, fontSize: '0.8rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           &copy; 2026 M. Lu'lu Khulaluddin.
         </footer>
       </main>

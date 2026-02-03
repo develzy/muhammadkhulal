@@ -81,7 +81,7 @@ a {
 }
 
 section {
-  padding: 6rem 0;
+  padding: 8rem 0;
   opacity: 0;
   animation: fadeIn 0.8s ease-out forwards;
 }
@@ -92,14 +92,15 @@ h1 {
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 h2 {
   font-size: 2.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  margin-top: 1rem;
   position: relative;
   display: inline-block;
 }
@@ -118,11 +119,11 @@ h2::after {
 h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 p {
-  line-height: 1.7;
+  line-height: 1.8;
   opacity: 0.85;
   font-weight: 300;
 }
@@ -158,6 +159,7 @@ p {
 /* Card Styling */
 .card {
   padding: 2.5rem;
+  margin-bottom: 3rem;
   transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   box-shadow: var(--card-shadow);
   border: 1px solid rgba(255, 255, 255, 0.05);
