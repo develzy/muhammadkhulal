@@ -30,13 +30,13 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-md"
+      className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-xl"
       onClick={onClose}
-      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 9999 }}
     >
       <div
-        className="relative bg-white rounded-lg overflow-hidden glass-panel"
-        style={{ width: '90%', maxWidth: '800px', height: '80vh', border: '1px solid rgba(255,255,255,0.2)' }}
+        className="relative bg-[#f5f5f7] rounded-3xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.5)]"
+        style={{ width: '92%', maxWidth: '850px', height: '85vh', border: '1px solid rgba(255,255,255,0.1)' }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Anti-Print CSS */}
@@ -47,10 +47,13 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
         `}</style>
 
         {/* Header */}
-        <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
-          <h3 className="text-white font-bold">{title}</h3>
-          <button onClick={onClose} className="text-white bg-red-500/80 px-3 py-1 rounded-full text-sm hover:bg-red-600">
-            Close
+        <div className="absolute top-0 left-0 right-0 p-5 flex justify-between items-center z-[100] bg-white/80 backdrop-blur-md border-b border-black/5">
+          <h3 className="text-black font-bold text-lg">{title}</h3>
+          <button
+            onClick={onClose}
+            className="bg-black text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all active:scale-95 shadow-lg"
+          >
+            Tutup
           </button>
         </div>
 
