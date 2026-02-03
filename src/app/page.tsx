@@ -155,10 +155,10 @@ export default function Home() {
   const [selectedCert, setSelectedCert] = useState<{ title: string, img: string } | null>(null);
 
   const educationList = [
-    { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru", img: "/Ijazah Ma'had Aly.png" },
-    { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri", img: "/Ijazah Aliyyah.png" },
-    { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes", img: "/Ijazah SMP.png" },
-    { school: "MI NU 01 Kalisalak", city: "Tegal", img: "/Ijazah MI.png" }
+    { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru", img: "" },
+    { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri", img: "https://res.cloudinary.com/dkwaosfda/image/upload/v1770133307/IJAZAH_ALIYAH_d9qotu.jpg" },
+    { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes", img: "https://res.cloudinary.com/dkwaosfda/image/upload/v1770133310/IJAZAH_SMP_v0usgw.jpg" },
+    { school: "MI NU 01 Kalisalak", city: "Tegal", img: "https://res.cloudinary.com/dkwaosfda/image/upload/v1770133307/IJAZAH_MI_bz5qwl.jpg" }
   ];
 
   return (
@@ -247,7 +247,13 @@ export default function Home() {
                     key={index}
                     style={{ marginBottom: '1rem', cursor: 'pointer' }}
                     className="hover:bg-black/5 p-2 rounded-lg transition-colors group"
-                    onClick={() => setSelectedCert({ title: edu.school, img: edu.img! })}
+                    onClick={() => {
+                      if (!edu.img) {
+                        alert("Ijazah Ma'had Aly masih dalam proses dari lembaga.");
+                        return;
+                      }
+                      setSelectedCert({ title: edu.school, img: edu.img })
+                    }}
                   >
                     {edu.tag && <span className="tag">{edu.tag}</span>}
                     <h3 className="group-hover:text-[var(--primary)] transition-colors">{edu.school}</h3>
