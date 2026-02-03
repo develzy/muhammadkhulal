@@ -85,7 +85,6 @@ export default function Home() {
   const educationList = [
     { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru" },
     { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri" },
-    { school: "SMK PGRI 03 Kota Kediri" },
     { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes" },
     { school: "MI NU 01 Kalisalak", city: "Tegal" }
   ];
