@@ -212,43 +212,11 @@ export default function Home() {
             }}>
               TENAGA PENDIDIK & ADMINISTRATIF
             </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              <a href="#profil" className="glass-panel" style={{
-                padding: '1rem 2.5rem',
-                fontWeight: 600,
-                color: 'var(--primary)',
-                borderRadius: '50px',
-                transition: 'all 0.3s ease',
-              }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 20px -5px var(--primary-glow)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
+            <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
+              <a href="#profil" className="btn btn-secondary">
                 Tentang Saya
               </a>
-              <a href="#kontak" className="glass-panel" style={{
-                padding: '1rem 2.5rem',
-                fontWeight: 600,
-                background: 'var(--foreground)',
-                color: 'var(--background)',
-                borderRadius: '50px',
-                border: 'none',
-                transition: 'all 0.3s ease'
-              }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
+              <a href="#kontak" className="btn btn-primary">
                 Hubungi
               </a>
             </div>
