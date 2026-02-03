@@ -112,20 +112,21 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className="hero">
-          <div className="container">
+          <div className="container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="glass-panel" style={{
-              width: '200px',
-              height: '200px',
+              width: '220px',
+              height: '220px',
               borderRadius: '50%',
-              margin: '0 auto 2rem',
-              background: 'linear-gradient(135deg, #e0e0e0, #f5f5f7)',
+              margin: '0 auto 2.5rem',
+              background: 'linear-gradient(135deg, #e2e8f0, #f8fafc)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               overflow: 'hidden',
-              border: '4px solid white',
-              boxShadow: '0 15px 35px rgba(0,0,0,0.12)',
-              position: 'relative'
+              border: '4px solid rgba(255,255,255,0.8)',
+              boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+              position: 'relative',
+              animation: 'float 6s ease-in-out infinite'
             }}>
               <Image
                 src="/saya.png"
@@ -136,12 +137,54 @@ export default function Home() {
               />
             </div>
             <h1 className="gradient-text">Mukhammad Lu'lu Khulaluddin</h1>
-            <p style={{ fontSize: '1.2rem', fontWeight: 500, opacity: 0.7, letterSpacing: '0.1em', marginBottom: '2rem' }}>
+            <p style={{
+              fontSize: '1.25rem',
+              fontWeight: 500,
+              opacity: 0.8,
+              letterSpacing: '0.2em',
+              marginBottom: '3rem',
+              color: 'var(--foreground)'
+            }}>
               TENAGA PENDIDIK & ADMINISTRATIF
             </p>
-            <div>
-              <a href="#profil" className="glass-panel" style={{ padding: '0.8rem 2rem', fontWeight: 600, color: 'var(--primary)', borderRadius: '50px' }}>
-                Explore Portfolio
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <a href="#profil" className="glass-panel" style={{
+                padding: '1rem 2.5rem',
+                fontWeight: 600,
+                color: 'var(--primary)',
+                borderRadius: '50px',
+                transition: 'all 0.3s ease',
+              }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 10px 20px -5px var(--primary-glow)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                Tentang Saya
+              </a>
+              <a href="#kontak" className="glass-panel" style={{
+                padding: '1rem 2.5rem',
+                fontWeight: 600,
+                background: 'var(--foreground)',
+                color: 'var(--background)',
+                borderRadius: '50px',
+                border: 'none',
+                transition: 'all 0.3s ease'
+              }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
+              >
+                Hubungi
               </a>
             </div>
           </div>
