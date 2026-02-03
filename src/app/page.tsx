@@ -49,12 +49,13 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
           width: '92%',
           maxWidth: '900px',
           height: '85vh',
-          backgroundColor: '#ffffff',
+          backgroundColor: '#000000',
           borderRadius: '32px',
           overflow: 'hidden',
-          boxShadow: '0 50px 100px rgba(0,0,0,0.5)',
+          boxShadow: '0 50px 100px rgba(0,0,0,0.8)',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
+          border: '1px solid rgba(255,255,255,0.1)'
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -71,23 +72,19 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderBottom: '1px solid rgba(0,0,0,0.05)',
-          backgroundColor: '#ffffff',
-          zIndex: 10
+          borderBottom: '1px solid rgba(255,255,255,0.1)',
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          zIndex: 10,
+          backdropFilter: 'blur(10px)'
         }}>
-          <h3 style={{ margin: 0, color: '#1d1d1f', fontSize: '1.2rem', fontWeight: 700 }}>{title}</h3>
+          <h3 style={{ margin: 0, color: '#ffffff', fontSize: '1.2rem', fontWeight: 700 }}>{title}</h3>
           <button
             onClick={onClose}
+            className="btn-primary"
             style={{
-              backgroundColor: '#000000',
-              color: '#ffffff',
-              border: 'none',
-              padding: '0.7rem 1.5rem',
-              borderRadius: '50px',
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
+              padding: '0.6rem 1.4rem',
+              fontSize: '0.85rem',
+              borderRadius: '50px'
             }}
           >
             Tutup
@@ -98,7 +95,7 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
         <div style={{
           flex: 1,
           position: 'relative',
-          backgroundColor: '#f5f5f7',
+          backgroundColor: '#0a0a0a',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -119,9 +116,9 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
             transform: 'rotate(-30deg)'
           }}>
             <p style={{
-              fontSize: '3rem',
+              fontSize: 'min(5vw, 3rem)',
               fontWeight: 900,
-              color: '#000',
+              color: '#fff',
               textAlign: 'center',
               lineHeight: 1.2
             }}>
@@ -296,7 +293,7 @@ export default function Home() {
                     className="hover:bg-black/5 p-2 rounded-lg transition-colors group"
                     onClick={() => {
                       if (!edu.img) {
-                        setToast("Ijazah Ma'had Aly masih dalam proses dari lembaga.");
+                        setToast("Ijazah Ma&apos;had Aly masih dalam proses dari lembaga.");
                         setTimeout(() => setToast(null), 3500);
                         return;
                       }
