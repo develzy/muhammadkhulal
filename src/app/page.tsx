@@ -153,6 +153,7 @@ const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath
 
 export default function Home() {
   const [selectedCert, setSelectedCert] = useState<{ title: string, img: string } | null>(null);
+  const [toast, setToast] = useState<string | null>(null);
 
   const educationList = [
     { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru", img: "" },
@@ -164,6 +165,46 @@ export default function Home() {
   return (
     <>
       {selectedCert && <CertificateViewer title={selectedCert.title} imgPath={selectedCert.img} onClose={() => setSelectedCert(null)} />}
+
+      {toast && (
+        <div
+          style={{
+            position: 'fixed',
+            top: '2rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 20000,
+            background: 'rgba(255, 255, 255, 0.9)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+            padding: '1rem 1.5rem',
+            borderRadius: '20px',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            animation: 'slideDown 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+            width: 'max-content',
+            maxWidth: '90vw'
+          }}
+        >
+          <div style={{
+            fontSize: '1.2rem',
+            background: 'var(--primary)',
+            width: '32px',
+            height: '32px',
+            borderRadius: '10px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white'
+          }}>
+            ℹ️
+          </div>
+          <span style={{ fontWeight: 600, color: '#1d1d1f', fontSize: '0.95rem' }}>{toast}</span>
+        </div>
+      )}
 
       <main>
         {/* Navigation */}
@@ -249,7 +290,8 @@ export default function Home() {
                     className="hover:bg-black/5 p-2 rounded-lg transition-colors group"
                     onClick={() => {
                       if (!edu.img) {
-                        alert("Ijazah Ma'had Aly masih dalam proses dari lembaga.");
+                        setToast("Ijazah Ma'had Aly masih dalam proses dari lembaga.");
+                        setTimeout(() => setToast(null), 3500);
                         return;
                       }
                       setSelectedCert({ title: edu.school, img: edu.img })
