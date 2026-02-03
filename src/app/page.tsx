@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-const CertificateViewer = ({ title, onClose }: { title: string; onClose: () => void }) => {
+const CertificateViewer = ({ title, imgPath, onClose }: { title: string; imgPath: string; onClose: () => void }) => {
   useEffect(() => {
     // Prevent scrolling when modal is open
     document.body.style.overflow = 'hidden';
@@ -67,11 +67,15 @@ const CertificateViewer = ({ title, onClose }: { title: string; onClose: () => v
             ))}
           </div>
 
-          {/* Certificate Placeholder Image */}
-          <div className="relative z-10 p-8 text-center text-white/50">
-            <span style={{ fontSize: '4rem', display: 'block', marginBottom: '1rem' }}>📜</span>
-            <p>Preview Ijazah: {title}</p>
-            <p className="text-sm mt-4">(Ganti kode ini dengan gambar ijazah asli)</p>
+          {/* Certificate Image */}
+          <div className="relative z-10 w-full h-full">
+            <Image
+              src={imgPath}
+              alt={`Ijazah ${title}`}
+              fill
+              style={{ objectFit: 'contain' }}
+              className="pointer-events-none"
+            />
           </div>
         </div>
       </div>
@@ -80,18 +84,18 @@ const CertificateViewer = ({ title, onClose }: { title: string; onClose: () => v
 };
 
 export default function Home() {
-  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+  const [selectedCert, setSelectedCert] = useState<{ title: string, img: string } | null>(null);
 
   const educationList = [
-    { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru" },
-    { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri" },
-    { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes" },
-    { school: "MI NU 01 Kalisalak", city: "Tegal" }
+    { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru", img: "/Ijazah Ma'had Aly.png" },
+    { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri", img: "/Ijazah Aliyyah.png" },
+    { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes", img: "/Ijazah SMP.png" },
+    { school: "MI NU 01 Kalisalak", city: "Tegal", img: "/Ijazah MI.png" }
   ];
 
   return (
     <main>
-      {selectedCert && <CertificateViewer title={selectedCert} onClose={() => setSelectedCert(null)} />}
+      {selectedCert && <CertificateViewer title={selectedCert.title} imgPath={selectedCert.img} onClose={() => setSelectedCert(null)} />}
 
       {/* Navigation */}
       <nav className="nav glass-panel">
@@ -163,7 +167,7 @@ export default function Home() {
                   key={index}
                   style={{ marginBottom: '1rem', cursor: 'pointer' }}
                   className="hover:bg-black/5 p-2 rounded-lg transition-colors group"
-                  onClick={() => setSelectedCert(edu.school)}
+                  onClick={() => setSelectedCert({ title: edu.school, img: edu.img! })}
                 >
                   {edu.tag && <span className="tag">{edu.tag}</span>}
                   <h3 className="group-hover:text-[var(--primary)] transition-colors">{edu.school}</h3>
