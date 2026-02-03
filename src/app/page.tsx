@@ -157,7 +157,7 @@ export default function Home() {
             </div>
             <div>
               <p style={{ fontWeight: 600 }}>Website</p>
-              <a href="#" style={{ color: 'var(--primary)' }}>www.muhammadkhulal.my.id</a>
+              <a href="https://muhammadkhulal.pages.dev" style={{ color: 'var(--primary)' }}>muhammadkhulal.pages.dev</a>
             </div>
           </div>
           <p style={{ marginTop: '3rem', fontSize: '0.9rem' }}>
