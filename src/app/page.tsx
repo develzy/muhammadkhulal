@@ -1,8 +1,99 @@
+"use client";
+
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
+
+const CertificateViewer = ({ title, onClose }: { title: string; onClose: () => void }) => {
+  useEffect(() => {
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = 'hidden';
+
+    // Disable right click
+    const handleContextMenu = (e: MouseEvent) => e.preventDefault();
+    document.addEventListener('contextmenu', handleContextMenu);
+
+    // Try to hide content on PrintScreen key (Not 100% effective due to OS limitations, but a deterrent)
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.key === 'PrintScreen') {
+        alert('Screenshots are not allowed!');
+        onClose();
+      }
+    };
+    window.addEventListener('keyup', handleKeyUp);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.removeEventListener('contextmenu', handleContextMenu);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 backdrop-blur-md"
+      onClick={onClose}
+      style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+    >
+      <div
+        className="relative bg-white rounded-lg overflow-hidden glass-panel"
+        style={{ width: '90%', maxWidth: '800px', height: '80vh', border: '1px solid rgba(255,255,255,0.2)' }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Anti-Print CSS */}
+        <style jsx global>{`
+          @media print {
+            body { display: none !important; }
+          }
+        `}</style>
+
+        {/* Header */}
+        <div className="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-50 bg-white/10 backdrop-blur-md border-b border-white/10">
+          <h3 className="text-white font-bold">{title}</h3>
+          <button onClick={onClose} className="text-white bg-red-500/80 px-3 py-1 rounded-full text-sm hover:bg-red-600">
+            Close
+          </button>
+        </div>
+
+        {/* Content Container */}
+        <div className="w-full h-full relative bg-gray-900 flex items-center justify-center select-none">
+          {/* Watermark Grid Overlay */}
+          <div className="absolute inset-0 z-40 pointer-events-none flex flex-wrap content-start overflow-hidden opacity-30">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div key={i} className="w-48 h-24 flex items-center justify-center transform -rotate-45">
+                <span className="text-white text-xs font-bold whitespace-nowrap">
+                  DOKUMEN ASLI DILINDUNGI<br />MILIK M. LU'LU KHULALUDDIN<br />DILARANG MENYALIN
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Certificate Placeholder Image */}
+          <div className="relative z-10 p-8 text-center text-white/50">
+            <span style={{ fontSize: '4rem', display: 'block', marginBottom: '1rem' }}>📜</span>
+            <p>Preview Ijazah: {title}</p>
+            <p className="text-sm mt-4">(Ganti kode ini dengan gambar ijazah asli)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function Home() {
+  const [selectedCert, setSelectedCert] = useState<string | null>(null);
+
+  const educationList = [
+    { school: "Ma'had Aly Lirboyo", city: "Kota Kediri", tag: "Terbaru" },
+    { school: "Madrasah Aliyyah Lirboyo", city: "Kota Kediri" },
+    { school: "SMK PGRI 03 Kota Kediri" },
+    { school: "SMP Busthanul Ulum Jatirokeh", city: "Brebes" },
+    { school: "MI NU 01 Kalisalak", city: "Tegal" }
+  ];
+
   return (
     <main>
+      {selectedCert && <CertificateViewer title={selectedCert} onClose={() => setSelectedCert(null)} />}
+
       {/* Navigation */}
       <nav className="nav glass-panel">
         <a href="#profil">Profil</a>
@@ -66,24 +157,20 @@ export default function Home() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
           <div className="glass-panel card">
             <h2>Pendidikan</h2>
+            <p className="mb-4 text-sm opacity-60">Klik untuk melihat ijazah (Protected)</p>
             <ul style={{ listStyle: 'none' }}>
-              <li style={{ marginBottom: '1rem' }}>
-                <span className="tag">Terbaru</span>
-                <h3>Ma'had Aly Lirboyo</h3>
-                <p>Kota Kediri</p>
-              </li>
-              <li style={{ marginBottom: '1rem' }}>
-                <h3>Madrasah Aliyyah Lirboyo</h3>
-                <p>Kota Kediri</p>
-              </li>
-              <li style={{ marginBottom: '1rem' }}>
-                <h3>SMP Busthanul Ulum Jatirokeh</h3>
-                <p>Brebes</p>
-              </li>
-              <li>
-                <h3>MI NU 01 Kalisalak</h3>
-                <p>Tegal</p>
-              </li>
+              {educationList.map((edu, index) => (
+                <li
+                  key={index}
+                  style={{ marginBottom: '1rem', cursor: 'pointer' }}
+                  className="hover:bg-black/5 p-2 rounded-lg transition-colors group"
+                  onClick={() => setSelectedCert(edu.school)}
+                >
+                  {edu.tag && <span className="tag">{edu.tag}</span>}
+                  <h3 className="group-hover:text-[var(--primary)] transition-colors">{edu.school}</h3>
+                  {edu.city && <p>{edu.city}</p>}
+                </li>
+              ))}
             </ul>
           </div>
 
